@@ -10,19 +10,19 @@
 
     <groupId>com.payneteasy</groupId>
     <artifactId>startup-parameters</artifactId>
-    <version>1.0-2</version>
+    <version>1.0-3-SNAPSHOT</version>
 
     <name>startup-parameters ${project.version}</name>
 
     <description>Read system parameters and environment variable</description>
 
-    <url>https://github.com/evsinev/startup-parameters</url>
+    <url>https://github.com/payneteasy/startup-parameters</url>
 
     <scm>
-        <connection>scm:git:git@github.com:evsinev/startup-parameters.git</connection>
-        <developerConnection>scm:git:git@github.com:evsinev/startup-parameters.git</developerConnection>
-        <url>https://github.com/evsinev/startup-parameters</url>
-      <tag>startup-parameters-1.0-2</tag>
+        <connection>scm:git:git@github.com:payneteasy/startup-parameters.git</connection>
+        <developerConnection>scm:git:git@github.com:payneteasy/startup-parameters.git</developerConnection>
+        <url>https://github.com/payneteasy/startup-parameters</url>
+      <tag>master</tag>
   </scm>
 
     <developers>
