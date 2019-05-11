@@ -35,7 +35,7 @@ How to use
 Create an interface with parameters
 
 ```java
-public interface IStartupParameters {
+public interface IStartupConfig {
 
     @AStartupParameter(name = "WEB_SERVER_PORT", value = "8083")
     int webServerPort();
@@ -52,6 +52,7 @@ Create an instance
 
 ```java
     IStartupParameters startupConfig = StartupParametersFactory.getStartupParameters(IStartupParameters.class);
+    int port = startupConfig.webServerPort()
 ```
 
 
