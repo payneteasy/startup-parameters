@@ -1,6 +1,6 @@
 [![maven](https://maven-badges.herokuapp.com/maven-central/com.payneteasy/startup-parameters/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.payneteasy/startup-parameters)
-[![Build Status](https://travis-ci.org/evsinev/startup-parameters.svg?branch=master)](https://travis-ci.org/evsinev/startup-parameters)
-[![CircleCI](https://circleci.com/gh/evsinev/startup-parameters.svg?style=svg)](https://circleci.com/gh/evsinev/startup-parameters)
+[![Build Status](https://travis-ci.org/payneteasy/startup-parameters.svg?branch=master)](https://travis-ci.org/evsinev/startup-parameters)
+[![CircleCI](https://circleci.com/gh/payneteasy/startup-parameters.svg?style=svg)](https://circleci.com/gh/evsinev/startup-parameters)
 
 Parse startup parameters
 ==========================
@@ -19,7 +19,7 @@ Parse startup parameters
 <dependency>
   <groupId>com.payneteasy</groupId>
   <artifactId>startup-parameters</artifactId>
-  <version>$VERSION</version>
+  <version>$VERSION</version> <!-- see releases --> 
 </dependency>
 ```
 
