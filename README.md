@@ -1,4 +1,4 @@
-[![maven](https://maven-badges.herokuapp.com/maven-central/com.payneteasy/startup-parameters/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.payneteasy/startup-parameters)
+[![Maven Central](https://img.shields.io/maven-central/v/com.payneteasy/startup-parameters.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.payneteasy%22%20AND%20a:%22startup-parameters%22)
 [![Build Status](https://travis-ci.org/payneteasy/startup-parameters.svg?branch=master)](https://travis-ci.org/payneteasy/startup-parameters)
 [![CircleCI](https://circleci.com/gh/payneteasy/startup-parameters.svg?style=svg)](https://circleci.com/gh/payneteasy/startup-parameters)
 
