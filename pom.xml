@@ -22,7 +22,7 @@
         <connection>scm:git:git@github.com:payneteasy/startup-parameters.git</connection>
         <developerConnection>scm:git:git@github.com:payneteasy/startup-parameters.git</developerConnection>
         <url>https://github.com/payneteasy/startup-parameters</url>
-      <tag>master</tag>
+      <tag>HEAD</tag>
   </scm>
 
     <developers>
