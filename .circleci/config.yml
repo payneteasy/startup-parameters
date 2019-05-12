@@ -26,3 +26,5 @@ jobs:
 
       - run: ./mvnw test
 
+      - run: ./mvnw org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar -Dsonar.host.url=https://sonarcloud.io -Dsonar.organization=evsinev-github -Dsonar.login=$SONAR_TOKEN
+
