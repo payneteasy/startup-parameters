@@ -1,6 +1,7 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.payneteasy/startup-parameters.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.payneteasy%22%20AND%20a:%22startup-parameters%22)
 [![Build Status](https://travis-ci.org/payneteasy/startup-parameters.svg?branch=master)](https://travis-ci.org/payneteasy/startup-parameters)
 [![CircleCI](https://circleci.com/gh/payneteasy/startup-parameters.svg?style=svg)](https://circleci.com/gh/payneteasy/startup-parameters)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.payneteasy%3Astartup-parameters&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.payneteasy%3Astartup-parameters)
 
 Parse startup parameters
 ==========================
