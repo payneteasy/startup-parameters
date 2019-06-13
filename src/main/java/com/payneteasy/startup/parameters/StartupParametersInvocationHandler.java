@@ -6,9 +6,7 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class StartupParametersInvocationHandler implements InvocationHandler {
 
@@ -18,6 +16,8 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
 
     public <T> StartupParametersInvocationHandler(Class<T> aClass) {
         parameters = new HashMap<>();
+
+        SortedMap<String, String> names = new TreeMap<>();
         for (Method method : aClass.getMethods()) {
             if(!method.isAnnotationPresent(AStartupParameter.class)) {
                 continue;
@@ -25,12 +25,14 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
 
             AStartupParameter parameterAnnotation = method.getAnnotation(AStartupParameter.class);
             parameters.put(method.getName(), getValue(method, parameterAnnotation));
+            names.put(parameterAnnotation.name(), method.getName());
         }
 
         int max = parameters.values().stream().map(startupParameter -> startupParameter.name.length()).max(Integer::compare).get();
         LOG.info("Startup parameters:");
-        for (Map.Entry<String, StartupParameter> entry : parameters.entrySet()) {
-            LOG.info("    {} {} = {}", entry.getValue().from, pad(entry.getValue().name, max), entry.getValue().value);
+        for (Map.Entry<String, String> entry : names.entrySet()) {
+            StartupParameter param = parameters.get(entry.getValue());
+            LOG.info("    {} {} = {}", param.from, pad(param.name, max), param.value);
         }
     }
 
