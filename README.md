@@ -1,5 +1,4 @@
 [![Maven Central](https://img.shields.io/maven-central/v/com.payneteasy/startup-parameters.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.payneteasy%22%20AND%20a:%22startup-parameters%22)
-[![Build Status](https://travis-ci.org/payneteasy/startup-parameters.svg?branch=master)](https://travis-ci.org/payneteasy/startup-parameters)
 [![CircleCI](https://circleci.com/gh/payneteasy/startup-parameters.svg?style=svg)](https://circleci.com/gh/payneteasy/startup-parameters)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.payneteasy%3Astartup-parameters&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.payneteasy%3Astartup-parameters)
 
@@ -33,7 +32,7 @@ compile 'com.payneteasy:startup-parameters:$VERSION'
 How to use
 ------------
 
-Create an interface with parameters
+Create an interface with parameters (example, https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/IStartupConfig.java#L5 )
 
 ```java
 public interface IStartupConfig {
@@ -49,7 +48,7 @@ public interface IStartupConfig {
 }
 ```
 
-Create an instance
+Create an instance (example, https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/StartupParametersFactoryTest.java#L13 )
 
 ```java
     IStartupParameters startupConfig = StartupParametersFactory.getStartupParameters(IStartupParameters.class);
