@@ -51,7 +51,7 @@ public interface IStartupConfig {
 Create an instance (example, https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/StartupParametersFactoryTest.java#L13 )
 
 ```java
-    IStartupParameters startupConfig = StartupParametersFactory.getStartupParameters(IStartupParameters.class);
+    IStartupConfig startupConfig = StartupParametersFactory.getStartupParameters(IStartupConfig.class);
     int port = startupConfig.webServerPort()
 ```
 
