@@ -10,6 +10,7 @@ Parse startup parameters
 
 * supported types: int, String, File, boolean
 * thread safe
+* small library size, dependencies only on slf4j-api for logging
 
 ## Setup with dependency managers
 
@@ -32,7 +33,7 @@ compile 'com.payneteasy:startup-parameters:1.0-5'
 How to use
 ------------
 
-Create an interface with parameters (example, https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/IStartupConfig.java#L5 )
+❶ Create an interface with parameters, [see example](https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/IStartupConfig.java#L5)
 
 ```java
 public interface IStartupConfig {
@@ -48,7 +49,7 @@ public interface IStartupConfig {
 }
 ```
 
-Create an instance (example, https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/StartupParametersFactoryTest.java#L13 )
+❷ Create an instance, [see example](https://github.com/payneteasy/startup-parameters/blob/e2464aa9d9cb9472c0a9cf44717e8bbcaa11801d/src/test/java/com/payneteasy/startup/parameters/StartupParametersFactoryTest.java#L13)
 
 ```java
     IStartupConfig startupConfig = StartupParametersFactory.getStartupParameters(IStartupConfig.class);
