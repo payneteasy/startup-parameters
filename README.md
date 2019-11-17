@@ -8,7 +8,7 @@ Parse startup parameters
 
 ## Features
 
-* supported types: int, String, File
+* supported types: int, String, File, boolean
 * thread safe
 
 ## Setup with dependency managers
@@ -19,14 +19,14 @@ Parse startup parameters
 <dependency>
   <groupId>com.payneteasy</groupId>
   <artifactId>startup-parameters</artifactId>
-  <version>$VERSION</version> <!-- see releases --> 
+  <version>1.0-5</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'com.payneteasy:startup-parameters:$VERSION'
+compile 'com.payneteasy:startup-parameters:1.0-5'
 ```
 
 How to use
