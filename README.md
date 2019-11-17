@@ -52,7 +52,7 @@ Create an instance (example, https://github.com/payneteasy/startup-parameters/bl
 
 ```java
     IStartupConfig startupConfig = StartupParametersFactory.getStartupParameters(IStartupConfig.class);
-    int port = startupConfig.webServerPort()
+    int port = startupConfig.webServerPort();
 ```
 
 
