@@ -23,5 +23,8 @@ public class StartupParametersFactoryTest {
 
         boolean useDebugMode = startupConfig.useDebugMode();
         assertTrue(useDebugMode);
+
+        long endpointId = startupConfig.endpointId();
+        assertEquals(9000372036854775807L, endpointId);
     }
 }

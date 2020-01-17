@@ -15,4 +15,7 @@ public interface IStartupConfig {
 
     @AStartupParameter(name = "USE_DEBUG_MODE", value = "true")
     boolean useDebugMode();
+
+    @AStartupParameter(name = "ENDPOINT_ID", value = "9000372036854775807")
+    long endpointId();
 }
