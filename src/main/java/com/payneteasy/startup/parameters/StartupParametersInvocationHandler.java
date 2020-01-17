@@ -57,6 +57,8 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
             value = Integer.parseInt(textValue);
         } else if (type == boolean.class) {
             value = Boolean.parseBoolean(textValue);
+        } else if (type == long.class) {
+            value = Long.parseLong(textValue);
         } else if(type == String.class) {
             value =  textValue;
         } else if(type == File.class) {
