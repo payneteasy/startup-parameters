@@ -20,14 +20,14 @@ Parse startup parameters
 <dependency>
   <groupId>com.payneteasy</groupId>
   <artifactId>startup-parameters</artifactId>
-  <version>1.0-5</version>
+  <version>1.0-6</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```groovy
-compile 'com.payneteasy:startup-parameters:1.0-5'
+compile 'com.payneteasy:startup-parameters:1.0-6'
 ```
 
 How to use
