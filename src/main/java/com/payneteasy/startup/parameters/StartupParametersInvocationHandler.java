@@ -1,16 +1,17 @@
 package com.payneteasy.startup.parameters;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
+import java.util.logging.Logger;
 
 public class StartupParametersInvocationHandler implements InvocationHandler {
 
-    private static final Logger LOG = LoggerFactory.getLogger(StartupParametersInvocationHandler.class);
+    private static final Logger LOG = Logger.getLogger(StartupParametersInvocationHandler.class.getName());
 
     private final Map<String, StartupParameter> parameters;
 
@@ -32,7 +33,7 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
         LOG.info("Startup parameters:");
         for (Map.Entry<String, String> entry : names.entrySet()) {
             StartupParameter param = parameters.get(entry.getValue());
-            LOG.info("    {} {} = {}", param.from, pad(param.name, max), param.value);
+            LOG.info(String.format("    %s %s = %s", param.from, pad(param.name, max), param.value));
         }
     }
 

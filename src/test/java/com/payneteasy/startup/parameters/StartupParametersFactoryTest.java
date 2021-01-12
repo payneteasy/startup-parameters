@@ -10,6 +10,8 @@ public class StartupParametersFactoryTest {
 
     @Test
     public void getStartupParametersTest() {
+        System.setProperty("java.util.logging.config.file", "src/test/resources/logging.properties");
+
         IStartupConfig startupConfig = StartupParametersFactory.getStartupParameters(IStartupConfig.class);
 
         File file = startupConfig.getUploadDir();
