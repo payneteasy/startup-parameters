@@ -14,6 +14,7 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
 
     private final Map<String, StartupParameter> parameters;
     private final List<ParameterLoaderMetadata> loaders;
+    private final ValueConverter                converter = new ValueConverter();
 
     public <T> StartupParametersInvocationHandler(Class<T> aClass, List<ParameterLoaderMetadata> aLoaders) {
         parameters = new HashMap<>();
@@ -48,27 +49,12 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
     }
 
     private StartupParameter getValue(Method aMethod, AStartupParameter aAnnotation) {
-        String name = aAnnotation.name();
-        String defaultValue = aAnnotation.value();
-        ValueFrom valueFrom = getValue(name, defaultValue);
-        String textValue = valueFrom.value;
-
-        Class<?> type = aMethod.getReturnType();
-        Object value;
-        if(type == int.class) {
-            value = Integer.parseInt(textValue);
-        } else if (type == boolean.class) {
-            value = Boolean.parseBoolean(textValue);
-        } else if (type == long.class) {
-            value = Long.parseLong(textValue);
-        } else if(type == String.class) {
-            value =  textValue;
-        } else if(type == File.class) {
-            value =  new File(textValue);
-        } else {
-            throw new IllegalStateException("Type " + type + " is unsupported for method " + aMethod);
-        }
-
+        String    name         = aAnnotation.name();
+        String    defaultValue = aAnnotation.value();
+        ValueFrom valueFrom    = getValue(name, defaultValue);
+        String    textValue    = valueFrom.value;
+        Class<?>  type         = aMethod.getReturnType();
+        Object    value        = converter.convertValue(type, textValue, aMethod);
         return new StartupParameter(name, value, valueFrom.from);
     }
 
