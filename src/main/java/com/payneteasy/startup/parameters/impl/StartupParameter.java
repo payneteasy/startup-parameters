@@ -1,4 +1,4 @@
-package com.payneteasy.startup.parameters;
+package com.payneteasy.startup.parameters.impl;
 
 
 public class StartupParameter {

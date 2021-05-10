@@ -1,12 +1,11 @@
-package com.payneteasy.startup.parameters;
+package com.payneteasy.startup.parameters.impl;
+
+import com.payneteasy.startup.parameters.AStartupParameter;
 
 import java.io.File;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.SortedMap;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class StartupParametersInvocationHandler implements InvocationHandler {
@@ -14,9 +13,11 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
     private static final Logger LOG = Logger.getLogger(StartupParametersInvocationHandler.class.getName());
 
     private final Map<String, StartupParameter> parameters;
+    private final List<ParameterLoaderMetadata> loaders;
 
-    public <T> StartupParametersInvocationHandler(Class<T> aClass) {
+    public <T> StartupParametersInvocationHandler(Class<T> aClass, List<ParameterLoaderMetadata> aLoaders) {
         parameters = new HashMap<>();
+        loaders = aLoaders;
 
         SortedMap<String, String> names = new TreeMap<>();
         for (Method method : aClass.getMethods()) {
@@ -29,7 +30,7 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
             names.put(parameterAnnotation.name(), method.getName());
         }
 
-        int max = parameters.values().stream().map(startupParameter -> startupParameter.name.length()).max(Integer::compare).get();
+        int max = parameters.values().stream().map(startupParameter -> startupParameter.name.length()).max(Integer::compare).orElse(10);
         LOG.info("Startup parameters:");
         for (Map.Entry<String, String> entry : names.entrySet()) {
             StartupParameter param = parameters.get(entry.getValue());
@@ -72,21 +73,14 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
     }
 
     private ValueFrom getValue(String aName, String aDefaultValue) {
-        String value = System.getProperty(aName);
-        if(hasText(value)) {
-            return new ValueFrom(value, "p");
-        }
-
-        value = System.getenv(aName);
-        if(hasText(value)) {
-            return new ValueFrom(value, "e");
+        for (ParameterLoaderMetadata metadata : loaders) {
+            String value = metadata.getLoader().getParameterValue(aName);
+            if(value != null) {
+                return new ValueFrom(value, metadata.getPrefix());
+            }
         }
 
         return new ValueFrom(aDefaultValue, "d");
-    }
-
-    private boolean hasText(String aText) {
-        return aText != null && aText.trim().length() > 0;
     }
 
     @Override
@@ -98,7 +92,7 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
         private final String value;
         private final String from;
 
-        public ValueFrom(String value, String from) {
+        private ValueFrom(String value, String from) {
             this.value = value;
             this.from = from;
         }

@@ -1,16 +1,15 @@
 package com.payneteasy.startup.parameters;
 
-import java.lang.reflect.Proxy;
+import com.payneteasy.startup.parameters.impl.ParameterPropertyLoader;
+import com.payneteasy.startup.parameters.impl.ParameterSystemLoader;
 
 public class StartupParametersFactory {
 
     public static <T> T getStartupParameters(Class<T> aClass) {
-        //noinspection unchecked
-        return (T) Proxy.newProxyInstance(
-                Thread.currentThread().getContextClassLoader()
-                , new Class[]{aClass}
-                , new StartupParametersInvocationHandler(aClass)
-        );
+        return new StartupParametersBuilder()
+                .addLoader("p", new ParameterPropertyLoader())
+                .addLoader("e", new ParameterSystemLoader())
+                .getStartupParameters(aClass);
     }
 
 }
