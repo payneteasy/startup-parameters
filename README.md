@@ -17,11 +17,21 @@ Parse startup parameters
 ### Maven
 
 ```xml
-<dependency>
-  <groupId>com.payneteasy</groupId>
-  <artifactId>startup-parameters</artifactId>
-  <version>1.0-6</version>
-</dependency>
+<repositories>
+    <repository>
+        <id>pne</id>
+        <name>payneteasy repo</name>
+        <url>https://maven.pne.io</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>com.payneteasy</groupId>
+        <artifactId>startup-parameters</artifactId>
+        <version>1.0-8</version>
+    </dependency>
+</dependencies>
 ```
 
 ### Gradle
