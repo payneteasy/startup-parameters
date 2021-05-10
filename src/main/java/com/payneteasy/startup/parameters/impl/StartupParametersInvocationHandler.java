@@ -54,8 +54,14 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
         ValueFrom valueFrom    = getValue(name, defaultValue);
         String    textValue    = valueFrom.value;
         Class<?>  type         = aMethod.getReturnType();
-        Object    value        = converter.convertValue(type, textValue, aMethod);
-        return new StartupParameter(name, value, valueFrom.from);
+
+        try {
+            Object value = converter.convertValue(type, textValue, aMethod);
+            return new StartupParameter(name, value, valueFrom.from);
+        } catch (Exception e) {
+            throw new IllegalStateException("Cannot parse '" + textValue + "' for type " + type + " and method " + aMethod.getName());
+        }
+
     }
 
     private ValueFrom getValue(String aName, String aDefaultValue) {
