@@ -1,4 +1,3 @@
-[![Maven Central](https://img.shields.io/maven-central/v/com.payneteasy/startup-parameters.svg?label=Maven%20Central)](https://search.maven.org/search?q=g:%22com.payneteasy%22%20AND%20a:%22startup-parameters%22)
 [![CircleCI](https://circleci.com/gh/payneteasy/startup-parameters.svg?style=svg)](https://circleci.com/gh/payneteasy/startup-parameters)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=com.payneteasy%3Astartup-parameters&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.payneteasy%3Astartup-parameters)
 
@@ -8,9 +7,8 @@ Parse startup parameters
 
 ## Features
 
-* supported types: int, String, File, boolean
+* supported types: int, String, File, boolean, char, long, Period, Duration, enums, BigDecimal
 * thread safe
-* small library size, dependencies only on slf4j-api for logging
 
 ## Setup with dependency managers
 
@@ -29,7 +27,7 @@ Parse startup parameters
     <dependency>
         <groupId>com.payneteasy</groupId>
         <artifactId>startup-parameters</artifactId>
-        <version>1.0-8</version>
+        <version>1.0-10</version>
     </dependency>
 </dependencies>
 ```
@@ -37,7 +35,7 @@ Parse startup parameters
 ### Gradle
 
 ```groovy
-compile 'com.payneteasy:startup-parameters:1.0-6'
+compile 'com.payneteasy:startup-parameters:1.0-10'
 ```
 
 How to use
