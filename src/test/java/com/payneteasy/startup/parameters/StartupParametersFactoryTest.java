@@ -30,5 +30,7 @@ public class StartupParametersFactoryTest {
         assertEquals(Duration.ofDays(1).plusHours(1), startupConfig.testDuration());
         assertEquals(TestEnum.TWO, startupConfig.testEnum());
         assertEquals(BigDecimal.ONE, startupConfig.testBigDecimal());
+        assertEquals("12345678", startupConfig.password());
+
     }
 }

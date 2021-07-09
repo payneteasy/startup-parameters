@@ -2,10 +2,13 @@ package com.payneteasy.startup.parameters.impl;
 
 import com.payneteasy.startup.parameters.AStartupParameter;
 
-import java.io.File;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.logging.Logger;
 
 public class StartupParametersInvocationHandler implements InvocationHandler {
@@ -35,8 +38,27 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
         LOG.info("Startup parameters:");
         for (Map.Entry<String, String> entry : names.entrySet()) {
             StartupParameter param = parameters.get(entry.getValue());
-            LOG.info(String.format("    %s %s = %s", param.from, pad(param.name, max), param.value));
+            Object           value = maskVariable(param.value, param.maskVariable);
+            LOG.info(String.format("    %s %s = %s", param.from, pad(param.name, max), value));
         }
+    }
+
+    private Object maskVariable(Object aValue, boolean aMaskVariable) {
+        if(!aMaskVariable) {
+            return aValue;
+        }
+
+        if(aValue == null) {
+            return null;
+        }
+
+        int           length = aValue.toString().length();
+        StringBuilder sb     = new StringBuilder(length);
+        for(int i=0; i<length; i++) {
+            sb.append('*');
+        }
+
+        return sb.toString();
     }
 
     private CharSequence pad(String aText, int aMax) {
@@ -57,7 +79,7 @@ public class StartupParametersInvocationHandler implements InvocationHandler {
 
         try {
             Object value = converter.convertValue(type, textValue, aMethod);
-            return new StartupParameter(name, value, valueFrom.from);
+            return new StartupParameter(name, value, valueFrom.from, aAnnotation.maskVariable());
         } catch (Exception e) {
             throw new IllegalStateException("Cannot parse '" + textValue + "' for type " + type + " and method " + aMethod.getName());
         }

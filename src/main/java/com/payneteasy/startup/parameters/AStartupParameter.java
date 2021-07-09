@@ -19,4 +19,8 @@ public @interface AStartupParameter {
      */
     String value();
 
+    /**
+     * Variable will be masked in logs
+     */
+    boolean maskVariable() default false;
 }

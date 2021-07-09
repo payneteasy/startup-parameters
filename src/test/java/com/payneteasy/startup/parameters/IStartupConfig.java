@@ -42,4 +42,7 @@ public interface IStartupConfig {
 
     @AStartupParameter(name = "TEST_CHAR", value = "h")
     char testChar();
+
+    @AStartupParameter(name = "PASSWORD", value = "12345678", maskVariable = true)
+    String password();
 }

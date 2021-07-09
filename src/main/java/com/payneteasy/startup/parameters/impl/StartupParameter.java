@@ -1,15 +1,17 @@
 package com.payneteasy.startup.parameters.impl;
 
 
-public class StartupParameter {
+class StartupParameter {
 
-    public final String name;
-    public final Object value;
-    public final String from;
+    final String  name;
+    final Object  value;
+    final String  from;
+    final boolean maskVariable;
 
-    public StartupParameter(String name, Object value, String from) {
+    StartupParameter(String name, Object value, String from, boolean aMaskVariable) {
         this.name = name;
         this.value = value;
         this.from = from;
+        maskVariable = aMaskVariable;
     }
 }
