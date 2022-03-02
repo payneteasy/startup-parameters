@@ -64,6 +64,13 @@ public interface IStartupConfig {
     int port = startupConfig.webServerPort();
 ```
 
+Pretty log
+----------
+
+```java
+SLF4JBridgeHandler.removeHandlersForRootLogger();
+SLF4JBridgeHandler.install();
+```
 
 ## License
 
